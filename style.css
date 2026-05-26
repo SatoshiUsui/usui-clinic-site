@@ -840,6 +840,185 @@ ul  { list-style: none; }
 
 
 /* ===========================================
+   News & Archive — TOP preview + archive pages
+   WP化時: .post-item → the_post() ループ 1件分
+           .post-list  → query ループラッパー
+   =========================================== */
+
+/* TOP page news wrapper */
+.news-section { background-color: var(--bg); }
+
+/* Archive page list wrapper */
+.post-list {
+    border-top: 1px solid var(--border);
+    margin-bottom: 44px;
+}
+
+/* ---- 1 post row ---- */
+/* WP: article.post.category-{cat} */
+.post-item {
+    border-bottom: 1px solid var(--border);
+}
+
+/* Inner anchor — 3 column grid: date | badge | title */
+.post-item-inner {
+    display: grid;
+    grid-template-columns: 110px 88px 1fr;
+    gap: 0 24px;
+    padding: 22px 0;
+    align-items: center;
+    color: inherit;
+    transition: background-color 0.18s ease;
+}
+
+.post-item-inner:hover {
+    background-color: rgba(0, 0, 0, 0.016);
+}
+
+/* WP: the_time() */
+.entry-date {
+    font-size: 0.84rem;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+/* WP: the_category() */
+.entry-category-badge {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* 休診情報カテゴリ: 控えめな暖色 */
+.cat-holiday .entry-category-badge {
+    color: #8a6640;
+    border-color: #c8a870;
+}
+
+/* コラムカテゴリ */
+.cat-column .entry-category-badge {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* WP: the_title() */
+.entry-title {
+    font-size: 0.96rem;
+    line-height: 1.75;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    transition: color 0.2s ease;
+}
+
+.post-item-inner:hover .entry-title { color: var(--text-mid); }
+
+/* アーカイブページ用: タイトル + 抜粋 縦並び */
+.entry-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* WP: the_excerpt() */
+.entry-excerpt {
+    font-size: 0.84rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
+
+/* ---- 一覧リンク行 ---- */
+.post-list-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+}
+
+.archive-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.archive-link::after {
+    content: '→';
+    font-size: 0.68rem;
+    letter-spacing: 0;
+}
+
+.archive-link:hover {
+    color: var(--text);
+    border-bottom-color: var(--text);
+}
+
+/* ---- アーカイブページ カテゴリ切替リンク ---- */
+.archive-filter {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+}
+
+.archive-filter-link {
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    padding: 0 0 16px;
+    margin-right: 32px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.archive-filter-link.is-active,
+.archive-filter-link:hover {
+    color: var(--text);
+    border-bottom-color: var(--text);
+}
+
+/* ---- 診療時間テーブル: スマホ横スクロール対応 ---- */
+.hours-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 600px) {
+    .hours-scroll { margin: 0 -24px; padding: 0 24px; }
+    .hours-table   { min-width: 340px; }
+
+    /* post-item: 2×2 グリッドに変形 */
+    .post-item-inner {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 10px 12px;
+        padding: 20px 0;
+    }
+
+    .entry-date            { grid-column: 1; grid-row: 1; font-size: 0.76rem; align-self: center; }
+    .entry-category-badge  { grid-column: 2; grid-row: 1; align-self: center; }
+    .entry-title,
+    .entry-body            { grid-column: 1 / -1; grid-row: 2; }
+    .entry-title           { font-size: 0.92rem; }
+
+    .post-list-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
+
+/* ===========================================
    Mobile Full-screen Menu
    =========================================== */
 .mobile-menu {
