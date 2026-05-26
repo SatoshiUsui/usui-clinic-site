@@ -69,6 +69,160 @@
         </div>
     </section>
 
+    <!-- ======= News ======= -->
+    <!--
+        WP化時:
+        - このセクション内を index.php / front-page.php に移植
+        - post-list を WP_Query( category_name=news, posts_per_page=3 ) に置き換え
+    -->
+    <section class="news-section section" id="news">
+        <div class="container">
+            <div class="sec-header fade-in">
+                <span class="en-label">News</span>
+                <h2 class="sec-title">お知らせ</h2>
+            </div>
+
+            <div class="post-list" role="list">
+
+                <!-- WP: <?php while (have_posts()) : the_post(); ?> -->
+                <article class="post-item cat-news" role="listitem">
+                    <a href="news.html#news-001" class="post-item-inner">
+                        <time class="entry-date" datetime="2026-04-01">2026.04.01</time>
+                        <span class="entry-category-badge">お知らせ</span>
+                        <p class="entry-title">ホームページを公開しました</p>
+                    </a>
+                </article>
+
+                <article class="post-item cat-news" role="listitem">
+                    <a href="news.html#news-002" class="post-item-inner">
+                        <time class="entry-date" datetime="2026-04-10">2026.04.10</time>
+                        <span class="entry-category-badge">お知らせ</span>
+                        <p class="entry-title">内覧会のお知らせ</p>
+                    </a>
+                </article>
+
+                <article class="post-item cat-holiday" role="listitem">
+                    <a href="news.html#news-003" class="post-item-inner">
+                        <time class="entry-date" datetime="2026-04-20">2026.04.20</time>
+                        <span class="entry-category-badge">休診情報</span>
+                        <p class="entry-title">ゴールデンウィーク期間の診療について</p>
+                    </a>
+                </article>
+                <!-- WP: <?php endwhile; ?> -->
+
+            </div>
+
+            <div class="post-list-footer fade-in">
+                <a href="news.html" class="archive-link">お知らせ一覧を見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Access ======= -->
+    <section class="access section" id="access">
+        <div class="container">
+            <div class="access-grid">
+                <div class="access-info fade-in">
+                    <span class="en-label">Access</span>
+                    <h2 class="sec-title">診療時間・アクセス</h2>
+
+                    <div class="hours-wrap">
+                        <div class="hours-scroll">
+                        <table class="hours-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>月</th>
+                                    <th>火</th>
+                                    <th>水</th>
+                                    <th>木</th>
+                                    <th>金</th>
+                                    <th>土</th>
+                                    <th>日祝</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time-label">午前<br><small>9:00–12:30</small></td>
+                                    <td>●</td>
+                                    <td>●</td>
+                                    <td>●</td>
+                                    <td>●</td>
+                                    <td>●</td>
+                                    <td>●</td>
+                                    <td class="closed">—</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-label">午後<br><small>14:00–18:00</small></td>
+                                    <td>●</td>
+                                    <td>●</td>
+                                    <td class="closed">—</td>
+                                    <td>●</td>
+                                    <td>●</td>
+                                    <td class="closed">—</td>
+                                    <td class="closed">—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div><!-- /.hours-scroll -->
+                        <p class="hours-note">※ 水曜午後・土曜午後・日祝は休診</p>
+                    </div>
+
+                    <div class="clinic-info">
+                        <dl>
+                            <dt>所在地</dt>
+                            <dd>〒000-0000 ○○県○○市○○町 X-XX<br>○○駅より徒歩X分</dd>
+                            <dt>電話</dt>
+                            <dd><a href="tel:0000000000">000-000-0000</a></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="access-map fade-in">
+                    <div class="map-area">
+                        <!-- Google Maps embed -->
+                        <p>地図を挿入</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Features ======= -->
+    <section class="features-section section" id="features">
+        <div class="container">
+            <div class="sec-header fade-in">
+                <span class="en-label">Features</span>
+                <h2 class="sec-title">当院の特徴</h2>
+            </div>
+            <div class="features-lead fade-in">
+                <p>脳の不安を、身近に相談できるクリニックとして。<br>専門性と相談しやすさの両方を大切にしています。</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item fade-in">
+                    <span class="feature-num">01</span>
+                    <h3 class="feature-title">脳神経外科専門医<br>による診療</h3>
+                    <p class="feature-body">脳神経外科専門医が直接診察を担当します。頭痛・めまいから脳の病気まで、専門的な視点で丁寧に対応します。</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <span class="feature-num">02</span>
+                    <h3 class="feature-title">MRIによる<br>画像検査</h3>
+                    <p class="feature-body">院内にMRI装置を完備しており、同日検査が可能です。脳の状態を詳細な画像で確認し、見逃しのない診断を行います。</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <span class="feature-num">03</span>
+                    <h3 class="feature-title">頭痛から脳卒中予防<br>まで対応</h3>
+                    <p class="feature-body">慢性頭痛の治療から脳ドックまで、幅広い症状に対応しています。小さな不安も、お気軽にご相談ください。</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <span class="feature-num">04</span>
+                    <h3 class="feature-title">相談しやすい<br>身近なクリニック</h3>
+                    <p class="feature-body">「大げさかな」と感じることでも、ためらわずにご来院ください。患者さんのペースに合わせた丁寧な説明を心がけています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ======= Symptom Nav ======= -->
     <section class="symptom-nav" id="symptoms">
         <div class="container">
@@ -193,43 +347,51 @@
         </div>
     </section>
 
-    <!-- ======= News ======= -->
+    <!-- ======= Column ======= -->
     <!--
         WP化時:
-        - このセクション内を index.php / front-page.php に移植
-        - post-list を WP_Query( category_name=news, posts_per_page=3 ) に置き換え
+        - post-list を WP_Query( category_name=column, posts_per_page=3 ) に置き換え
     -->
-    <section class="news-section section" id="news">
+    <section class="column-section section" id="column">
         <div class="container">
             <div class="sec-header fade-in">
-                <span class="en-label">News</span>
-                <h2 class="sec-title">お知らせ</h2>
+                <span class="en-label">Column</span>
+                <h2 class="sec-title">医療コラム</h2>
             </div>
 
             <div class="post-list" role="list">
 
                 <!-- WP: <?php while (have_posts()) : the_post(); ?> -->
-                <article class="post-item cat-news" role="listitem">
-                    <a href="news.html#news-001" class="post-item-inner">
-                        <time class="entry-date" datetime="2026-04-01">2026.04.01</time>
-                        <span class="entry-category-badge">お知らせ</span>
-                        <p class="entry-title">ホームページを公開しました</p>
+                <article class="post-item cat-column" role="listitem">
+                    <a href="column.html#col-001" class="post-item-inner">
+                        <time class="entry-date" datetime="2026-05-15">2026.05.15</time>
+                        <span class="entry-category-badge">コラム</span>
+                        <div class="entry-body">
+                            <p class="entry-title">脳卒中予防のためにできること</p>
+                            <p class="entry-excerpt">高血圧・糖尿病・喫煙は脳卒中の三大リスク因子です。定期的な血圧測定と生活習慣の見直しが、予防への最初の一歩です。</p>
+                        </div>
                     </a>
                 </article>
 
-                <article class="post-item cat-news" role="listitem">
-                    <a href="news.html#news-002" class="post-item-inner">
-                        <time class="entry-date" datetime="2026-04-10">2026.04.10</time>
-                        <span class="entry-category-badge">お知らせ</span>
-                        <p class="entry-title">内覧会のお知らせ</p>
+                <article class="post-item cat-column" role="listitem">
+                    <a href="column.html#col-002" class="post-item-inner">
+                        <time class="entry-date" datetime="2026-05-08">2026.05.08</time>
+                        <span class="entry-category-badge">コラム</span>
+                        <div class="entry-body">
+                            <p class="entry-title">MRIとCTの違い</p>
+                            <p class="entry-excerpt">MRIは磁気を使って脳の軟部組織を詳細に描出し、CTはX線で骨や出血を素早く確認します。症状によって使い分けることが重要です。</p>
+                        </div>
                     </a>
                 </article>
 
-                <article class="post-item cat-holiday" role="listitem">
-                    <a href="news.html#news-003" class="post-item-inner">
-                        <time class="entry-date" datetime="2026-04-20">2026.04.20</time>
-                        <span class="entry-category-badge">休診情報</span>
-                        <p class="entry-title">ゴールデンウィーク期間の診療について</p>
+                <article class="post-item cat-column" role="listitem">
+                    <a href="column.html#col-003" class="post-item-inner">
+                        <time class="entry-date" datetime="2026-05-01">2026.05.01</time>
+                        <span class="entry-category-badge">コラム</span>
+                        <div class="entry-body">
+                            <p class="entry-title">危険な頭痛とは</p>
+                            <p class="entry-excerpt">「今まで経験したことのない激しい頭痛」「突然バットで殴られたような頭痛」は、くも膜下出血のサインかもしれません。すぐに受診してください。</p>
+                        </div>
                     </a>
                 </article>
                 <!-- WP: <?php endwhile; ?> -->
@@ -237,77 +399,7 @@
             </div>
 
             <div class="post-list-footer fade-in">
-                <a href="column.html" class="archive-link">医療コラム</a>
-                <a href="news.html" class="archive-link">お知らせ一覧を見る</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= Access ======= -->
-    <section class="access section" id="access">
-        <div class="container">
-            <div class="access-grid">
-                <div class="access-info fade-in">
-                    <span class="en-label">Access</span>
-                    <h2 class="sec-title">診療時間・アクセス</h2>
-
-                    <div class="hours-wrap">
-                        <div class="hours-scroll">
-                        <table class="hours-table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>月</th>
-                                    <th>火</th>
-                                    <th>水</th>
-                                    <th>木</th>
-                                    <th>金</th>
-                                    <th>土</th>
-                                    <th>日祝</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="time-label">午前<br><small>9:00–12:30</small></td>
-                                    <td>●</td>
-                                    <td>●</td>
-                                    <td>●</td>
-                                    <td>●</td>
-                                    <td>●</td>
-                                    <td>●</td>
-                                    <td class="closed">—</td>
-                                </tr>
-                                <tr>
-                                    <td class="time-label">午後<br><small>14:00–18:00</small></td>
-                                    <td>●</td>
-                                    <td>●</td>
-                                    <td class="closed">—</td>
-                                    <td>●</td>
-                                    <td>●</td>
-                                    <td class="closed">—</td>
-                                    <td class="closed">—</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div><!-- /.hours-scroll -->
-                        <p class="hours-note">※ 水曜午後・土曜午後・日祝は休診</p>
-                    </div>
-
-                    <div class="clinic-info">
-                        <dl>
-                            <dt>所在地</dt>
-                            <dd>〒000-0000 ○○県○○市○○町 X-XX<br>○○駅より徒歩X分</dd>
-                            <dt>電話</dt>
-                            <dd><a href="tel:0000000000">000-000-0000</a></dd>
-                        </dl>
-                    </div>
-                </div>
-                <div class="access-map fade-in">
-                    <div class="map-area">
-                        <!-- Google Maps embed -->
-                        <p>地図を挿入</p>
-                    </div>
-                </div>
+                <a href="column.html" class="archive-link">コラム一覧を見る</a>
             </div>
         </div>
     </section>
