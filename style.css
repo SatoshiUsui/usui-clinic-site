@@ -346,19 +346,31 @@ ul  { list-style: none; }
     border-top: 1px solid var(--border);
 }
 
+/* <li> — border のみ保持 */
 .symptom-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 64px;
-    padding: 52px 0;
     border-bottom: 1px solid var(--border);
-    align-items: start;
+}
+
+/* <a> — グリッドの実体 */
+.symptom-row-inner {
+    display: grid;
+    grid-template-columns: 200px 1fr 28px;
+    gap: 0 64px;
+    align-items: center;
+    padding: 52px 0;
+    color: inherit;
+    transition: background-color 0.2s ease;
+}
+
+.symptom-row-inner:hover {
+    background-color: rgba(0,0,0,0.018);
 }
 
 .symptom-row-head {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-self: start;
     padding-top: 4px;
 }
 
@@ -377,11 +389,31 @@ ul  { list-style: none; }
     line-height: 1.5;
 }
 
+.symptom-row-body {
+    align-self: start;
+    padding-top: 4px;
+}
+
 .symptom-row-body p {
     font-size: 0.86rem;
     line-height: 2.4;
     letter-spacing: 0.05em;
     color: var(--text-mid);
+}
+
+/* 矢印：デスクトップはホバー時のみ表示 */
+.symptom-arrow {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    justify-self: end;
+}
+
+.symptom-row-inner:hover .symptom-arrow {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* ===========================================
@@ -545,7 +577,23 @@ ul  { list-style: none; }
 
 .contact-tel-link:hover .ctl-num { color: var(--accent); }
 
-/* Web予約・お問い合わせ：テキストリンクのみ */
+/* Web予約ボタン：テキストベース、控えめなアウトライン */
+.contact-web-link {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--text-mid);
+    border: 1px solid var(--border);
+    padding: 10px 28px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.contact-web-link:hover {
+    color: var(--text);
+    border-color: var(--text);
+}
+
+/* お問い合わせ：テキストリンクのみ */
 .contact-other {
     display: flex;
     align-items: center;
@@ -553,24 +601,17 @@ ul  { list-style: none; }
 }
 
 .contact-text-link {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     letter-spacing: 0.1em;
-    color: var(--text-mid);
+    color: var(--text-muted);
     border-bottom: 1px solid var(--border);
     padding-bottom: 2px;
     transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .contact-text-link:hover {
-    color: var(--text);
-    border-bottom-color: var(--text);
-}
-
-.contact-divider {
-    display: block;
-    width: 1px;
-    height: 14px;
-    background: var(--border);
+    color: var(--text-mid);
+    border-bottom-color: var(--text-mid);
 }
 
 /* ===========================================
@@ -651,9 +692,9 @@ ul  { list-style: none; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .about-lead { position: static; }
 
-    .symptom-row {
-        grid-template-columns: 140px 1fr;
-        gap: 36px;
+    .symptom-row-inner {
+        grid-template-columns: 160px 1fr 24px;
+        gap: 0 36px;
     }
 
     .access-grid { grid-template-columns: 1fr; gap: 56px; }
@@ -672,32 +713,130 @@ ul  { list-style: none; }
     .container { padding: 0 24px; }
     .header    { padding: 0 24px; height: 60px; }
 
-    .hero { margin-top: 60px; min-height: calc(100svh - 60px); }
-    .hero-text  { padding: 40px 24px 24px; }
-    .hero-photo { padding: 0 24px 44px; min-height: 64vw; }
+    /* ------- Hero: 写真を上に移動（先頭表示） ------- */
+    .hero {
+        margin-top: 60px;
+        min-height: auto;           /* 高さを内容に委ねる */
+        display: flex;
+        flex-direction: column;
+    }
 
-    .section { padding: 88px 0; }
+    .hero-photo {
+        order: -1;                  /* 写真を先頭へ */
+        padding: 28px 24px 0;       /* 上の余白のみ — 写真がヘッダー直下に来る */
+        min-height: 64vw;
+    }
 
+    .hero-text {
+        padding: 32px 24px 52px;
+        justify-content: flex-start;
+    }
+
+    .hero-scroll { margin-top: 32px; }
+
+    /* ------- Sections ------- */
+    .section { padding: 80px 0; }
+
+    /* ------- Symptom nav: 2列グリッド ------- */
     .symptom-nav-list {
         flex-wrap: wrap;
     }
-
     .symptom-nav-list li {
         flex: 0 0 50%;
         border-bottom: 1px solid var(--border);
     }
-
     .symptom-nav-list li:nth-child(2n) { border-right: none; }
+    /* 最後の行 (5番目) は下ボーダー不要 */
+    .symptom-nav-list li:nth-child(5) { border-bottom: none; }
 
-    .symptom-row {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 40px 0;
+    /* ------- Symptom rows: タップ領域確保・矢印常時表示 ------- */
+    .symptom-row-inner {
+        /*
+          モバイルでは2カラム:
+          [頭部+本文] [矢印]
+          縦に並べ、矢印はグリッド右側で縦中央
+        */
+        grid-template-columns: 1fr 24px;
+        grid-template-rows: auto auto;
+        gap: 0 16px;
+        padding: 36px 0;
+        align-items: start;
     }
 
-    .symptom-row-head { flex-direction: row; align-items: center; gap: 16px; }
+    .symptom-row-head {
+        grid-column: 1;
+        grid-row: 1;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 12px;
+    }
 
+    .symptom-row-body {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 12px;
+    }
+
+    /* 矢印: モバイルは常時表示 */
+    .symptom-arrow {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        align-self: center;
+        justify-self: end;
+        opacity: 1;
+        transform: none;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    /* ------- Contact: ボタン強化 ------- */
     .contact-section { padding: 72px 0; }
 
+    /* 電話ボタン: フル幅ボーダーボックス */
+    .contact-tel-link {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border: 1px solid var(--border);
+        padding: 22px 24px;
+        transition: border-color 0.25s ease;
+    }
+    .contact-tel-link:hover { border-color: var(--text-mid); }
+
+    .ctl-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        color: var(--text-muted);
+    }
+
+    .ctl-num {
+        font-size: 1.65rem;       /* スマホで読みやすい大きさ */
+    }
+
+    /* Web予約ボタン: フル幅ボーダーボックス */
+    .contact-web-link {
+        display: block;
+        text-align: center;
+        padding: 18px 24px;
+        font-size: 0.82rem;
+        letter-spacing: 0.14em;
+        border: 1px solid var(--border);
+        color: var(--text-mid);
+        transition: border-color 0.25s ease, color 0.25s ease;
+    }
+    .contact-web-link:hover {
+        border-color: var(--text-mid);
+        color: var(--text);
+    }
+
+    /* お問い合わせフォームはテキストリンクのまま */
+    .contact-other { margin-top: 4px; }
+
+    /* ------- Footer ------- */
     .footer { padding: 36px 0; }
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 }
