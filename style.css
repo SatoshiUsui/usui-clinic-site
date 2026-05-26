@@ -24,7 +24,7 @@ body {
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 300;
+    font-weight: 400;        /* 300 → 400: 高齢者への読みやすさ向上 */
     line-height: 2;
     letter-spacing: 0.06em;
     -webkit-font-smoothing: antialiased;
@@ -85,6 +85,7 @@ ul  { list-style: none; }
     font-size: 0.76rem;
     letter-spacing: 0.1em;
     color: var(--text-muted);
+    font-weight: 300;   /* ヘッダーナビは細さを維持 */
     transition: color 0.25s ease;
 }
 
@@ -324,8 +325,8 @@ ul  { list-style: none; }
 }
 
 .about-body p {
-    font-size: 0.88rem;
-    line-height: 2.5;
+    font-size: 1rem;
+    line-height: 2.4;
     letter-spacing: 0.06em;
     color: var(--text-mid);
     margin-bottom: 28px;
@@ -391,8 +392,8 @@ ul  { list-style: none; }
 }
 
 .symptom-row-body p {
-    font-size: 0.86rem;
-    line-height: 2.4;
+    font-size: 0.96rem;
+    line-height: 2.3;
     letter-spacing: 0.05em;
     color: var(--text-mid);
 }
@@ -431,7 +432,7 @@ ul  { list-style: none; }
 .hours-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.76rem;
+    font-size: 0.85rem;
     letter-spacing: 0.04em;
 }
 
@@ -476,8 +477,8 @@ ul  { list-style: none; }
     display: grid;
     grid-template-columns: 4em 1fr;
     gap: 14px 24px;
-    font-size: 0.82rem;
-    line-height: 1.9;
+    font-size: 0.94rem;
+    line-height: 2;
     letter-spacing: 0.04em;
     align-items: start;
 }
@@ -535,10 +536,10 @@ ul  { list-style: none; }
 }
 
 .contact-sub {
-    font-size: 0.82rem;
+    font-size: 0.94rem;
     color: var(--text-muted);
     letter-spacing: 0.06em;
-    line-height: 1.9;
+    line-height: 2;
     margin-bottom: 48px;
 }
 
@@ -839,15 +840,142 @@ ul  { list-style: none; }
 
 
 /* ===========================================
+   Mobile Full-screen Menu
+   =========================================== */
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 190;                       /* header (200) より下、コンテンツより上 */
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px 80px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.38s ease, visibility 0.38s ease;
+}
+
+.mobile-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.mobile-menu-nav ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu-nav li {
+    border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu-nav li:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.mobile-menu-nav a {
+    display: block;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 200;
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+    letter-spacing: 0.1em;
+    color: var(--text);
+    padding: 28px 0;
+    transition: color 0.2s ease;
+}
+
+.mobile-menu-nav a:hover { color: var(--text-muted); }
+
+/* ハンバーガー → × アニメーション */
+.hamburger span {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+.hamburger[aria-expanded="true"] span:first-child {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+}
+
+/* PC ではモバイルメニューを非表示 */
+@media (min-width: 961px) {
+    .mobile-menu         { display: none !important; }
+    .mobile-contact-bar  { display: none !important; }
+}
+
+
+/* ===========================================
+   Mobile Fixed Contact Bar (スマホのみ)
+   =========================================== */
+.mobile-contact-bar {
+    display: none;      /* PC では非表示 */
+}
+
+@media (max-width: 960px) {
+    .mobile-contact-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 56px;
+        background-color: var(--bg-alt);
+        border-top: 1px solid var(--border);
+        z-index: 180;
+    }
+
+    .mcb-link {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        color: var(--text-mid);
+        font-weight: 400;
+        transition: background-color 0.2s ease;
+    }
+
+    .mcb-link:active { background-color: var(--bg); }
+
+    .mcb-tel {
+        border-right: 1px solid var(--border);
+    }
+
+    /* 固定バーの高さ分だけ body 下部に余白を追加 */
+    body { padding-bottom: 56px; }
+}
+
+
+/* ===========================================
    Inner page — 症状個別ページ共通
    =========================================== */
 
-/* ページヒーロー */
+/*
+  ヘッダー重複防止の共通ルール
+  ─────────────────────────────────────────
+  header は position:fixed のためレイアウトフローから外れる。
+  body.is-inner に padding-top = header高さ を与えることで
+  全子要素が自動的にヘッダー下から始まる。
+  個別セクションに margin-top を書く必要がなくなる。
+*/
+.is-inner {
+    padding-top: 68px;   /* PC: header の height と一致 */
+}
+
+/* ページヒーロー — header 下からさらに 120px 下げる */
 .page-hero {
     padding: 120px 0 88px;
     background-color: var(--bg-alt);
     border-bottom: 1px solid var(--border);
-    margin-top: 68px;
+    /* margin-top は body.is-inner の padding-top で代替済み */
 }
 
 .back-link {
@@ -918,8 +1046,8 @@ ul  { list-style: none; }
 }
 
 .page-section-body p {
-    font-size: 0.88rem;
-    line-height: 2.5;
+    font-size: 1rem;
+    line-height: 2.4;
     color: var(--text-mid);
     letter-spacing: 0.06em;
     margin-bottom: 24px;
@@ -951,8 +1079,8 @@ ul  { list-style: none; }
 }
 
 .symptom-alert li {
-    font-size: 0.86rem;
-    line-height: 1.7;
+    font-size: 0.96rem;
+    line-height: 1.9;
     color: var(--text-mid);
     letter-spacing: 0.05em;
     padding-left: 18px;
@@ -1037,14 +1165,15 @@ ul  { list-style: none; }
 }
 
 @media (max-width: 600px) {
-    .page-hero { padding: 88px 0 64px; margin-top: 60px; }
-    .page-title { font-size: clamp(1.8rem, 8vw, 2.5rem); }
-    .page-section { padding: 72px 0; }
+    /*
+      モバイル: header が 60px に縮まるので padding-top も合わせる。
+      page-hero の padding-top は「header 下から 80px」相当。
+    */
+    .is-inner            { padding-top: 60px; }   /* mobile header height */
+    .page-hero           { padding: 80px 0 60px; }
+    .page-title          { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+    .page-section        { padding: 72px 0; }
 
-    .other-symptoms-grid {
-        flex-wrap: wrap;
-    }
-    .other-symptoms-grid a {
-        flex: 0 0 calc(50% - 1px);
-    }
+    .other-symptoms-grid { flex-wrap: wrap; }
+    .other-symptoms-grid a { flex: 0 0 calc(50% - 1px); }
 }
