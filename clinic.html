@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--
+    WP化時: このファイルは page-clinic.php に移植
+    固定ページ (page) として管理
+-->
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリニック案内 — うすい脳神経外科・頭痛クリニック</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-inner">
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-ja">うすい脳神経外科・頭痛クリニック</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-has-dropdown">
+                        <span class="nav-parent" aria-current="page">クリニック案内</span>
+                        <ul class="nav-dropdown">
+                            <li><a href="clinic.html" aria-current="page">クリニック案内</a></li>
+                            <li><a href="facility.html">医院案内</a></li>
+                            <li><a href="doctor.html">医師紹介</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#symptoms">症状から探す</a></li>
+                    <li><a href="news.html">お知らせ</a></li>
+                    <li><a href="index.html#access">アクセス</a></li>
+                    <li><a href="index.html#contact">ご予約</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="メインメニュー" aria-hidden="true">
+        <nav class="mobile-menu-nav">
+            <ul>
+                <li><a href="clinic.html">クリニック案内</a></li>
+                <li><a href="facility.html">医院案内</a></li>
+                <li><a href="doctor.html">医師紹介</a></li>
+                <li><a href="index.html#symptoms">症状から探す</a></li>
+                <li><a href="news.html">お知らせ</a></li>
+                <li><a href="index.html#access">アクセス</a></li>
+                <li><a href="index.html#contact">ご予約</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- ======= Page Hero ======= -->
+    <section class="page-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="パンくずリスト">
+                <ol>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li>クリニック案内</li>
+                </ol>
+            </nav>
+            <h1 class="page-title">クリニック案内</h1>
+            <p class="page-tagline">
+                脳の不安を、身近に相談できるクリニックとして。<br>
+                頭痛、めまい、しびれ、もの忘れなど、<br>
+                気になる症状を気軽に相談できる環境づくりを大切にしています。
+            </p>
+        </div>
+    </section>
+
+    <!-- ======= 当院の理念 ======= -->
+    <!--
+        WP: カスタムフィールド or ACF で管理
+    -->
+    <div class="page-body">
+
+        <section class="page-section" style="background-color: var(--bg-alt);">
+            <div class="container">
+                <div class="page-two-col">
+                    <div class="fade-in">
+                        <span class="en-label">Philosophy</span>
+                        <h2 class="sec-title">当院の理念</h2>
+                    </div>
+                    <div class="page-section-body fade-in">
+                        <p>
+                            「この頭痛は大丈夫だろうか」「もの忘れが増えてきた気がする」——
+                            そんな日常のなかの小さな不安を、一人で抱え込まないでほしいと思っています。
+                        </p>
+                        <p>
+                            うすい脳神経外科・頭痛クリニックは、脳に関するあらゆる症状を気軽に相談できる、
+                            地域に根ざしたクリニックを目指しています。
+                            専門医による丁寧な診察と、わかりやすい言葉での説明を心がけ、
+                            患者さんが安心して通えるクリニックであり続けたいと考えています。
+                        </p>
+                        <p>
+                            「大げさかな」と思っても、どうかそのままにしないでください。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section" style="background-color: var(--bg);">
+            <div class="container">
+                <div class="page-two-col">
+                    <div class="fade-in">
+                        <span class="en-label">Policy</span>
+                        <h2 class="sec-title">診療方針</h2>
+                    </div>
+                    <div class="page-section-body fade-in">
+                        <p>
+                            患者さんの「話を聞いてもらえた」という実感を大切にしています。
+                            症状の背景にある生活環境や不安についても、できる限り時間をかけてうかがいます。
+                        </p>
+                        <p>
+                            検査の結果や治療の選択肢は、医学的な専門用語を使わず、
+                            わかりやすく丁寧にご説明します。
+                            治療方針は患者さんと相談しながら、一緒に決めていきます。
+                        </p>
+                        <p>
+                            「かかりつけ医として、長く頼りにしていただけるクリニック」を目標に、
+                            地域の皆さんの脳と健康を、できる限りそばで支えていきます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section" style="background-color: var(--bg-alt);">
+            <div class="container">
+                <div class="sec-header fade-in">
+                    <span class="en-label">Medical Services</span>
+                    <h2 class="sec-title">診療内容</h2>
+                </div>
+                <p class="page-section-body fade-in" style="margin-bottom: 0;">
+                    頭痛・めまいなどの身近な症状から、脳卒中予防・認知症の早期発見まで、
+                    脳と神経に関わる幅広い症状に対応しています。
+                </p>
+                <ul class="service-list fade-in">
+                    <li>頭痛（片頭痛・緊張型頭痛・群発頭痛）</li>
+                    <li>めまい・ふらつき</li>
+                    <li>手足のしびれ</li>
+                    <li>もの忘れ・認知症相談</li>
+                    <li>脳卒中予防・脳ドック</li>
+                    <li>頭部外傷後の経過観察</li>
+                    <li>高血圧・糖尿病の管理</li>
+                    <li>てんかん</li>
+                    <li>神経痛・神経疾患全般</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="page-section" style="background-color: var(--bg);">
+            <div class="container">
+                <div class="page-two-col">
+                    <div class="fade-in">
+                        <span class="en-label">Community</span>
+                        <h2 class="sec-title">地域の脳の<br>かかりつけ医として</h2>
+                    </div>
+                    <div class="page-section-body fade-in">
+                        <p>
+                            「脳の病気は敷居が高い」と感じる方も多いと思います。
+                            しかし、頭痛・めまい・しびれといった症状は、
+                            日常的に多くの方が経験されるものです。
+                        </p>
+                        <p>
+                            当院は、こうした身近な症状から、
+                            脳卒中のリスク評価や認知症の早期発見まで、
+                            「脳のかかりつけ医」として気軽にご相談いただける体制を整えています。
+                        </p>
+                        <p>
+                            大学病院や総合病院への紹介状の作成も、
+                            状況に応じて丁寧に対応いたします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- /.page-body -->
+
+    <!-- ======= Contact ======= -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-inner fade-in">
+                <p class="contact-lead">まずは、お気軽にご相談ください</p>
+                <p class="contact-sub">初診の方も、セカンドオピニオンも、どうぞお気軽にお電話ください。</p>
+                <div class="contact-links">
+                    <a href="tel:0000000000" class="contact-tel-link">
+                        <span class="ctl-label">お電話でのご予約</span>
+                        <span class="ctl-num">000-000-0000</span>
+                    </a>
+                    <a href="#" class="contact-web-link">Web予約</a>
+                    <div class="contact-other">
+                        <a href="#" class="contact-text-link">お問い合わせフォーム</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <p class="footer-name">うすい脳神経外科・頭痛クリニック</p>
+                <p class="footer-copy">&copy; 2026 Usui Neurosurgery &amp; Headache Clinic</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-contact-bar" role="complementary" aria-label="お電話・Web予約">
+        <a href="tel:0000000000" class="mcb-link mcb-tel">電話</a>
+        <a href="index.html#contact" class="mcb-link mcb-web">WEB予約</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

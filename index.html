@@ -19,7 +19,14 @@
             </a>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="#about">クリニックについて</a></li>
+                    <li class="nav-has-dropdown">
+                        <span class="nav-parent">クリニック案内</span>
+                        <ul class="nav-dropdown">
+                            <li><a href="clinic.html">クリニック案内</a></li>
+                            <li><a href="facility.html">医院案内</a></li>
+                            <li><a href="doctor.html">医師紹介</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#symptoms">症状から探す</a></li>
                     <li><a href="#news">お知らせ</a></li>
                     <li><a href="#access">アクセス</a></li>
@@ -36,7 +43,9 @@
     <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="メインメニュー" aria-hidden="true">
         <nav class="mobile-menu-nav">
             <ul>
-                <li><a href="#about">クリニックについて</a></li>
+                <li><a href="clinic.html">クリニック案内</a></li>
+                <li><a href="facility.html">医院案内</a></li>
+                <li><a href="doctor.html">医師紹介</a></li>
                 <li><a href="#symptoms">症状から探す</a></li>
                 <li><a href="#news">お知らせ</a></li>
                 <li><a href="#access">アクセス</a></li>
@@ -207,7 +216,7 @@
                 <div class="feature-item fade-in">
                     <span class="feature-num">02</span>
                     <h3 class="feature-title">MRIによる<br>画像検査</h3>
-                    <p class="feature-body">院内にMRI装置を完備しており、同日検査が可能です。脳の状態を詳細な画像で確認し、見逃しのない診断を行います。</p>
+                    <p class="feature-body">院内にMRI装置を完備しています。必要に応じてMRI検査を行い、脳の状態を画像で確認しながら丁寧な診断に努めます。</p>
                 </div>
                 <div class="feature-item fade-in">
                     <span class="feature-num">03</span>
@@ -219,6 +228,13 @@
                     <h3 class="feature-title">相談しやすい<br>身近なクリニック</h3>
                     <p class="feature-body">「大げさかな」と感じることでも、ためらわずにご来院ください。患者さんのペースに合わせた丁寧な説明を心がけています。</p>
                 </div>
+            </div>
+
+            <div class="features-links fade-in">
+                <span class="features-links-label">詳しく見る</span>
+                <a href="clinic.html" class="features-page-link">クリニック案内</a>
+                <a href="facility.html" class="features-page-link">医院案内</a>
+                <a href="doctor.html" class="features-page-link">医師紹介</a>
             </div>
         </div>
     </section>
@@ -314,7 +330,7 @@
                             <h3 class="symptom-name">しびれ</h3>
                         </div>
                         <div class="symptom-row-body">
-                            <p>手足のしびれは、脳や脊髄、末梢神経の異常から生じることがあります。片側だけのしびれ、急に現れたしびれは、脳梗塞などの前兆である可能性も。放置せずに受診してください。</p>
+                            <p>手足のしびれは、脳や脊髄、末梢神経のはたらきと関係していることがあります。片側だけのしびれや、突然現れたしびれは、早めにご相談ください。</p>
                         </div>
                         <span class="symptom-arrow" aria-hidden="true">→</span>
                     </a>
@@ -390,7 +406,7 @@
                         <span class="entry-category-badge">コラム</span>
                         <div class="entry-body">
                             <p class="entry-title">危険な頭痛とは</p>
-                            <p class="entry-excerpt">「今まで経験したことのない激しい頭痛」「突然バットで殴られたような頭痛」は、くも膜下出血のサインかもしれません。すぐに受診してください。</p>
+                            <p class="entry-excerpt">「今まで経験したことのない激しい頭痛」「突然バットで殴られたような頭痛」は、速やかな受診をご検討ください。</p>
                         </div>
                     </a>
                 </article>

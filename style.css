@@ -1092,6 +1092,363 @@ ul  { list-style: none; }
 
 
 /* ===========================================
+   Nav Dropdown
+   =========================================== */
+
+.nav-has-dropdown { position: relative; }
+
+.nav-parent {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    color: var(--text-mid);
+    cursor: default;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+}
+
+.nav-parent::after {
+    content: '▾';
+    font-size: 0.52rem;
+    opacity: 0.55;
+    margin-top: 1px;
+}
+
+.nav-has-dropdown:hover .nav-parent,
+.nav-has-dropdown:focus-within .nav-parent { color: var(--text); }
+
+/* dropdown panel */
+.nav-dropdown {
+    position: absolute;
+    top: calc(100% + 20px);
+    left: -24px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    list-style: none;
+    padding: 8px 0;
+    min-width: 148px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    z-index: 300;
+}
+
+.nav-has-dropdown:hover .nav-dropdown,
+.nav-has-dropdown:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown a {
+    display: block;
+    padding: 11px 24px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--text-mid);
+    white-space: nowrap;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.nav-dropdown a:hover,
+.nav-dropdown a[aria-current] {
+    color: var(--text);
+    background-color: var(--bg);
+}
+
+/* ===========================================
+   Breadcrumb
+   =========================================== */
+
+.breadcrumb { margin-bottom: 28px; }
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.breadcrumb li {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+.breadcrumb li + li::before {
+    content: '/';
+    margin: 0 10px;
+    color: var(--border);
+}
+
+.breadcrumb a {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover { color: var(--text-mid); }
+
+/* ===========================================
+   Features section — 詳しく見る リンク群 (TOP page)
+   =========================================== */
+
+.features-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    margin-top: 56px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+}
+
+.features-links-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.features-page-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.features-page-link::after { content: '→'; font-size: 0.65rem; letter-spacing: 0; }
+.features-page-link:hover  { color: var(--text); border-bottom-color: var(--text); }
+
+@media (max-width: 600px) {
+    .features-links { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .features-links-label { margin-bottom: 4px; }
+}
+
+/* ===========================================
+   Inner pages — 2-col editorial layout
+   =========================================== */
+
+.page-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 72px;
+    align-items: start;
+}
+
+@media (max-width: 960px) {
+    .page-two-col { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ===========================================
+   Service / 診療内容 grid
+   =========================================== */
+
+.service-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    margin-top: 40px;
+}
+
+.service-list li {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+    .service-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===========================================
+   Facility — image placeholder + area layout
+   =========================================== */
+
+.facility-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+}
+
+/* 奇数番目: 画像左 / 偶数番目: 画像右 */
+.facility-area.is-reverse { direction: rtl; }
+.facility-area.is-reverse > * { direction: ltr; }
+
+.img-placeholder {
+    aspect-ratio: 4 / 3;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.img-placeholder-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+}
+
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.facility-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.facility-body p {
+    font-size: 0.92rem;
+    line-height: 2.2;
+    letter-spacing: 0.05em;
+    color: var(--text-mid);
+    margin-bottom: 0;
+}
+
+@media (max-width: 960px) {
+    .facility-area,
+    .facility-area.is-reverse { grid-template-columns: 1fr; direction: ltr; gap: 32px; }
+}
+
+/* ===========================================
+   Doctor profile
+   =========================================== */
+
+.doctor-profile {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 72px;
+}
+
+.doctor-photo {
+    aspect-ratio: 3 / 4;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doctor-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.doctor-photo-placeholder {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+}
+
+.doctor-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+}
+
+.doctor-name-en {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.doctor-position {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--text-mid);
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+}
+
+.doctor-greeting {
+    font-size: 0.95rem;
+    line-height: 2.2;
+    letter-spacing: 0.05em;
+}
+
+/* Career & credentials */
+.career-list { border-top: 1px solid var(--border); }
+
+.career-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+}
+
+.career-year {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.career-desc {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    letter-spacing: 0.05em;
+}
+
+.qual-list { list-style: none; border-top: 1px solid var(--border); }
+
+.qual-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    line-height: 1.75;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.qual-list li::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+    .doctor-profile { grid-template-columns: 1fr; gap: 40px; }
+    .doctor-photo    { max-width: 220px; }
+}
+
+/* ===========================================
    Mobile Full-screen Menu
    =========================================== */
 .mobile-menu {
