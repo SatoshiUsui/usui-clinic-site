@@ -79,6 +79,22 @@ ul  { list-style: none; }
     display: flex;
     align-items: center;
     gap: 40px;
+    height: 100%;
+}
+
+/* li は flex コンテナにして縦中央揃え */
+.nav-list > li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* a タグ・span(.nav-parent) 共通: 縦中央揃え */
+.nav-list a,
+.nav-list .nav-parent {
+    display: flex;
+    align-items: center;
+    line-height: 1;
 }
 
 .nav-list a {
@@ -1098,17 +1114,15 @@ ul  { list-style: none; }
 .nav-has-dropdown { position: relative; }
 
 .nav-parent {
-    display: flex;
-    align-items: center;
+    /* display/align-items は .nav-list a, .nav-list .nav-parent で一括定義済み */
     gap: 3px;
-    font-size: 0.74rem;
-    letter-spacing: 0.12em;
-    color: var(--text-mid);
+    font-size: 0.76rem;          /* 他の nav-list a と揃える */
+    letter-spacing: 0.1em;
+    color: var(--text-muted);    /* 他の nav-list a と揃える */
+    font-weight: 300;
     cursor: default;
     transition: color 0.2s ease;
     white-space: nowrap;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 1px;
 }
 
 .nav-parent::after {
