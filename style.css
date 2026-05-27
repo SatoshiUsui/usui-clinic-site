@@ -868,6 +868,33 @@ ul  { list-style: none; }
 .column-section   { background-color: var(--bg); }
 
 /* ===========================================
+   Clinic Photo — 特徴セクション前の1枚写真
+   =========================================== */
+
+.clinic-photo-section {
+    background-color: var(--bg);
+    padding: 80px 0;
+}
+
+.clinic-photo-figure {
+    margin: 0;
+    line-height: 0;   /* img 下の隙間を除去 */
+}
+
+.clinic-photo-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center 40%;  /* MRI機器が中央に来るよう微調整 */
+}
+
+@media (max-width: 600px) {
+    .clinic-photo-section { padding: 48px 0; }
+    .clinic-photo-figure img { aspect-ratio: 4 / 3; }
+}
+
+/* ===========================================
    Features — 当院の特徴
    =========================================== */
 
