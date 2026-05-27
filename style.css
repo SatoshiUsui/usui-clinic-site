@@ -140,8 +140,8 @@ ul  { list-style: none; }
    =========================================== */
 .hero {
     display: grid;
-    grid-template-columns: 42fr 58fr;
-    min-height: 100svh;          /* フル高さ — 写真を上へ伸ばす */
+    grid-template-columns: 47fr 53fr;   /* 写真列を 58→53% に縮小 */
+    min-height: 100svh;
     margin-top: 68px;
     background-color: var(--bg);
 }
@@ -214,11 +214,8 @@ ul  { list-style: none; }
 
 /* ---- Right: photo with generous padding ---- */
 .hero-photo {
-    /*
-      Top padding を削除し写真を上限まで引き上げる。
-      右・下・左の余白で "floating" 感を維持。
-    */
-    padding: 0 80px 72px 24px;
+    /* 右・下・左の余白で "floating" 感を維持。上: 写真を端まで伸ばす */
+    padding: 0 96px 80px 32px;   /* 右パディングを増やし写真を更に縮小 */
 }
 
 .hero-photo-frame {
@@ -868,30 +865,31 @@ ul  { list-style: none; }
 .column-section   { background-color: var(--bg); }
 
 /* ===========================================
-   Clinic Photo — 特徴セクション前の1枚写真
+   Features photo — 特徴セクション内の導入写真
    =========================================== */
 
-.clinic-photo-section {
-    background-color: var(--bg);
-    padding: 80px 0;
+/* セクション見出し・リード → 写真 → グリッドの間の余白 */
+.features-photo {
+    margin: 56px auto 64px;   /* 上: リードとの間 / 下: グリッドとの間 */
+    max-width: 900px;
+    line-height: 0;
 }
 
-.clinic-photo-figure {
-    margin: 0;
-    line-height: 0;   /* img 下の隙間を除去 */
-}
-
-.clinic-photo-figure img {
+.features-photo img {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    object-position: center 40%;  /* MRI機器が中央に来るよう微調整 */
+    object-position: center 40%;
+}
+
+@media (max-width: 960px) {
+    .features-photo { max-width: 100%; margin: 48px 0 56px; }
 }
 
 @media (max-width: 600px) {
-    .clinic-photo-section { padding: 48px 0; }
-    .clinic-photo-figure img { aspect-ratio: 4 / 3; }
+    .features-photo { margin: 36px 0 44px; }
+    .features-photo img { aspect-ratio: 4 / 3; }
 }
 
 /* ===========================================
