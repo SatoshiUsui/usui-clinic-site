@@ -140,9 +140,12 @@ ul  { list-style: none; }
    =========================================== */
 .hero {
     display: grid;
-    grid-template-columns: 56fr 44fr;   /* テキスト優先: 写真列を 44% に縮小 */
+    grid-template-columns: 55fr 45fr;   /* テキスト 55% : 写真 45% */
+    gap: 80px;
+    align-items: center;     /* 両カラムの中央線を揃える */
     min-height: 100svh;
-    margin-top: 68px;
+    max-width: 1200px;       /* 2カラムをコンパクトにまとめる */
+    margin: 68px auto 0;     /* 中央寄せ (margin-top は header 高さ分) */
     background-color: var(--bg);
 }
 
@@ -150,8 +153,8 @@ ul  { list-style: none; }
 .hero-text {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 60px 48px 88px 72px;
+    justify-content: flex-start;    /* グリッドの align-items: center で縦中央を確保 */
+    padding: 72px 32px 72px 64px;   /* 上下対称にして自然な中央寄せに */
 }
 
 .hero-label {
@@ -166,7 +169,8 @@ ul  { list-style: none; }
 .hero-catch {
     font-family: 'Noto Serif JP', serif;
     font-weight: 200;
-    font-size: clamp(1.55rem, 2.2vw, 2.4rem);  /* 1.15× 拡大 */
+    font-size: clamp(1.55rem, 2.2vw, 2.4rem);
+    white-space: nowrap;    /* <br> 以外での自動折り返しを禁止（スマホで解除）*/
     line-height: 2.05;
     letter-spacing: 0.1em;
     color: var(--text);
@@ -215,17 +219,17 @@ ul  { list-style: none; }
 /* ---- Right: photo — PC では補助的な役割に抑える ---- */
 .hero-photo {
     display: flex;
-    align-items: flex-start;    /* 写真をフレーム天端に揃え、下に空白を確保 */
-    padding: 56px 80px 72px 8px;
+    align-items: flex-start;
+    padding: 0 16px 0 0;        /* 縦パディングを撤去: グリッドの center に委ねる */
 }
 
 .hero-photo-frame {
     width: 100%;
-    max-width: 560px;           /* PC: 最大幅を制限 (550〜600px) */
+    max-width: 540px;           /* PC: 現在より少し大きめ */
     height: auto;
-    aspect-ratio: 3 / 4;        /* 縦長ポートレート比 — 約 560×747px */
+    aspect-ratio: 3 / 4;        /* 縦長ポートレート比 */
     overflow: hidden;
-    margin-left: auto;          /* 写真列内で右寄せ */
+    margin-left: 0;             /* 右端寄せを解除 */
 }
 
 .hero-photo-frame img {
@@ -742,6 +746,7 @@ ul  { list-style: none; }
         min-height: auto;           /* 高さを内容に委ねる */
         display: flex;
         flex-direction: column;
+        align-items: stretch;       /* PC の align-items: center をリセット */
     }
 
     .hero-photo {
@@ -762,6 +767,8 @@ ul  { list-style: none; }
         padding: 32px 24px 52px;
         justify-content: flex-start;
     }
+
+    .hero-catch { white-space: normal; }    /* スマホは通常の折り返しに戻す */
 
     .hero-scroll { margin-top: 32px; }
 
@@ -890,7 +897,7 @@ ul  { list-style: none; }
 
 /* セクション見出し・リード → 写真 → グリッドの間の余白 */
 .features-photo {
-    margin: 56px auto 64px;   /* 上: リードとの間 / 下: グリッドとの間 */
+    margin: 52px auto 60px;
     max-width: 900px;
     line-height: 0;
 }
@@ -898,18 +905,18 @@ ul  { list-style: none; }
 .features-photo img {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 320px;              /* 固定高さで主張を抑える */
     object-fit: cover;
-    object-position: center 40%;
+    object-position: center 50%;
 }
 
 @media (max-width: 960px) {
-    .features-photo { max-width: 100%; margin: 48px 0 56px; }
+    .features-photo { max-width: 100%; margin: 44px 0 52px; }
 }
 
 @media (max-width: 600px) {
-    .features-photo { margin: 36px 0 44px; }
-    .features-photo img { aspect-ratio: 4 / 3; }
+    .features-photo { margin: 32px 0 44px; }
+    .features-photo img { height: 240px; }  /* スマホは少し低め */
 }
 
 /* ===========================================
